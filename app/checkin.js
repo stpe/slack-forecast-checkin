@@ -51,6 +51,10 @@ Promise.all([
   people = peopleFilter
     // exclude persons
     .exclude(people, process.env.PEOPLE_EXCLUDE_FILTER)
+    // filter archived people
+    .filter(p => {
+      return p.archived === false;
+    })
     // noticed weird case with trailing space, this fixes it
     .map(p => {
       p.first_name = p.first_name.trim();
